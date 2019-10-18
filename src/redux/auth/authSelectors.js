@@ -11,3 +11,8 @@ export const selectInitialFetch = createSelector(
   selectUser,
   auth => auth.initialFetch
 );
+
+export const selectIsAuthenticated = createSelector(
+  selectUser,
+  auth => auth.isAuthenticated
+);

@@ -13,7 +13,7 @@ import {
 } from './authTypes';
 
 // Sign Up actions
-const requestSignUp = () => ({
+const signUpRequest = () => ({
   type: SIGN_UP_REQUEST,
 });
 
@@ -22,13 +22,13 @@ const signUpSuccess = userAuth => ({
   payload: userAuth,
 });
 
-const signUpError = error => ({
+const signUpError = errorMessage => ({
   type: SIGN_UP_FAILURE,
-  payload: error,
+  payload: errorMessage,
 });
 
 // Login actions
-const requestLogin = () => ({
+const loginRequest = () => ({
   type: LOGIN_REQUEST,
 });
 
@@ -37,13 +37,13 @@ const loginSuccess = userAuth => ({
   payload: userAuth,
 });
 
-const loginError = error => ({
+const loginError = errorMessage => ({
   type: LOGIN_FAILURE,
-  payload: error,
+  payload: errorMessage,
 });
 
 // Logout actions
-const requestLogOut = () => ({
+const logOutRequest = () => ({
   type: LOGOUT_REQUEST,
 });
 
@@ -51,9 +51,9 @@ const logOutSuccess = () => ({
   type: LOGOUT_SUCCESS,
 });
 
-const logOutError = error => ({
+const logOutError = errorMessage => ({
   type: LOGOUT_FAILURE,
-  payload: error,
+  payload: errorMessage,
 });
 
 const setCurrentUser = user => ({
@@ -62,7 +62,7 @@ const setCurrentUser = user => ({
 });
 
 export const loginUser = (email, password, callback) => dispatch => {
-  dispatch(requestLogin());
+  dispatch(loginRequest());
   auth
     .signInWithEmailAndPassword(email, password)
     .then(userAuth => {
@@ -70,12 +70,12 @@ export const loginUser = (email, password, callback) => dispatch => {
       callback();
     })
     .catch(error => {
-      dispatch(loginError(error));
+      dispatch(loginError(error.message));
     });
 };
 
 export const signUpUser = (email, password, data, callback) => dispatch => {
-  dispatch(requestSignUp());
+  dispatch(signUpRequest());
   auth
     .createUserWithEmailAndPassword(email, password)
     .then(userAuth => {
@@ -94,12 +94,12 @@ export const signUpUser = (email, password, data, callback) => dispatch => {
       callback();
     })
     .catch(error => {
-      dispatch(signUpError(error));
+      dispatch(signUpError(error.message));
     });
 };
 
 export const logoutUser = callback => dispatch => {
-  dispatch(requestLogOut());
+  dispatch(logOutRequest());
   auth
     .signOut()
     .then(() => {
@@ -107,7 +107,7 @@ export const logoutUser = callback => dispatch => {
       callback();
     })
     .catch(error => {
-      dispatch(logOutError(error));
+      dispatch(logOutError(error.message));
     });
 };
 
