@@ -1,30 +1,21 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import FormInput from '../components/FormInput';
-import { SubmitButton } from '../components/CustomButton';
+import FormInput from './FormInput';
+import { SubmitButton } from './CustomButton';
 import { signUpUser } from '../redux/auth/authActions';
 
-const Signup = ({ history, signUpUser }) => {
-  const [credentials, setCredentials] = useState({
-    displayName: '',
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    password: '',
-    confirmPassword: '',
-  });
+const INITIAL_STATE = {
+  displayName: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+};
 
-  const {
-    displayName,
-    firstName,
-    lastName,
-    email,
-    phoneNumber,
-    password,
-    confirmPassword,
-  } = credentials;
+const Signup = ({ history, signUpUser }) => {
+  const [credentials, setCredentials] = useState(INITIAL_STATE);
+
+  const { displayName, email, password, confirmPassword } = credentials;
 
   const handleChange = event => {
     const { name, value } = event.target;
@@ -42,26 +33,9 @@ const Signup = ({ history, signUpUser }) => {
       return null;
     }
 
-    await signUpUser(
-      email,
-      password,
-      {
-        firstName,
-        lastName,
-        phoneNumber,
-        displayName,
-      },
-      () => history.push('/')
-    );
-
-    setCredentials({
-      displayName: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: '',
-      password: '',
-      confirmPassword: '',
+    await signUpUser(email, password, { displayName }, () => {
+      setCredentials(INITIAL_STATE);
+      history.push('/');
     });
   };
 
@@ -79,34 +53,10 @@ const Signup = ({ history, signUpUser }) => {
         />
         <FormInput
           required
-          type="text"
-          label="First Name"
-          name="firstName"
-          value={firstName}
-          handleChange={handleChange}
-        />
-        <FormInput
-          required
-          type="text"
-          label="Last Name"
-          name="lastName"
-          value={lastName}
-          handleChange={handleChange}
-        />
-        <FormInput
-          required
           type="email"
           label="Email"
           name="email"
           value={email}
-          handleChange={handleChange}
-        />
-        <FormInput
-          required
-          type="tel"
-          label="Phone Number"
-          name="phoneNumber"
-          value={phoneNumber}
           handleChange={handleChange}
         />
         <FormInput
@@ -125,9 +75,7 @@ const Signup = ({ history, signUpUser }) => {
           value={confirmPassword}
           handleChange={handleChange}
         />
-        <SubmitButton className="btn-small blue-grey darken-3">
-          Sign Up
-        </SubmitButton>
+        <SubmitButton>Sign Up</SubmitButton>
       </form>
     </>
   );

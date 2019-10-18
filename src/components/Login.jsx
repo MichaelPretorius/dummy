@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-
 import { connect } from 'react-redux';
-import FormInput from '../components/FormInput';
-import { SubmitButton } from '../components/CustomButton';
+
+import FormInput from './FormInput';
+import { SubmitButton } from './CustomButton';
 import { loginUser } from '../redux/auth/authActions';
 
 const Login = ({ history, loginUser }) => {
@@ -24,11 +24,12 @@ const Login = ({ history, loginUser }) => {
   const handleSubmit = async event => {
     event.preventDefault();
 
-    await loginUser(email, password, () => history.push('/'));
-
-    setCredentials({
-      email: '',
-      password: '',
+    await loginUser(email, password, () => {
+      setCredentials({
+        email: '',
+        password: '',
+      });
+      history.push('/');
     });
   };
 
@@ -52,9 +53,7 @@ const Login = ({ history, loginUser }) => {
           value={password}
           handleChange={handleChange}
         />
-        <SubmitButton className="btn-small blue-grey darken-3">
-          Log In
-        </SubmitButton>
+        <SubmitButton>Log In</SubmitButton>
       </form>
     </div>
   );

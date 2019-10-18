@@ -2,37 +2,29 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {
-  selectInitialFetch,
-  selectIsAuthenticated,
-} from '../redux/auth/authSelectors';
+import { selectIsAuthenticated } from '../redux/auth/authSelectors';
 
-const AuthRoute = ({
-  component: Component,
-  initialFetch,
-  isAuthenticated,
-  ...rest
-}) => (
+const AuthRoute = ({ component: Component, isAuthenticated, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
-      isAuthenticated ? (
-        <Component {...props} />
-      ) : (
-        <Redirect
-          to={{
-            pathname: '/',
-            state: { from: props.location },
-          }}
-        />
-        // eslint-disable-next-line prettier/prettier
-      )
+    render={
+      props =>
+        isAuthenticated ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/',
+              state: { from: props.location },
+            }}
+          />
+        )
+      // eslint-disable-next-line react/jsx-curly-newline
     }
   />
 );
 
 const mapStateToProps = state => ({
-  initialFetch: selectInitialFetch(state),
   isAuthenticated: selectIsAuthenticated(state),
 });
 

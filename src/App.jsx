@@ -1,13 +1,14 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
-import { GlobalStyle } from './theme/globalStyles';
 import Home from './pages/Home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
 import Private from './pages/Private';
-import Header from './pages/Header';
+import Login from './components/Login';
+import Header from './components/Header';
+import Signup from './components/Signup';
+import AuthRoute from './components/AuthRoute';
+import { GlobalStyle } from './theme/globalStyles';
 import { selectInitialFetch } from './redux/auth/authSelectors';
 
 function App({ initialFetch }) {
@@ -21,7 +22,7 @@ function App({ initialFetch }) {
             <Route exact path="/" component={Home} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/private" component={Private} />
+            <AuthRoute exact path="/private" component={Private} />
           </Switch>
         </>
       ) : (
