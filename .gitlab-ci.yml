@@ -1,0 +1,148 @@
+image: node:12.13.0
+
+stages:
+  - install
+  - build
+  - quality
+  - deploy
+  - audit
+
+variables:
+  npm_config_cache: '$CI_PROJECT_DIR/.npm'
+  # Add URL's to dev on prod site
+  DEV_URL: ''
+  PROD_URL: ''
+
+install:
+  stage: install
+  tags:
+    - gitlab-org
+  script:
+    - npm install
+  artifacts:
+    name: 'artifacts'
+    untracked: true
+    expire_in: 60 mins
+    paths:
+      - .npm/
+      - node_modules/
+
+build:
+  stage: build
+  tags:
+    - gitlab-org
+  script:
+    - CI=false npm run build
+  artifacts:
+    paths:
+      - build
+    expire_in: 60 mins
+  dependencies:
+    - install
+  except:
+    refs:
+      - master
+
+build_prod:
+  stage: build
+  tags:
+    - gitlab-org
+  before_script:
+    - mv .env temp.env
+    - mv prod.env .env
+  script:
+    - CI=false npm run build
+  after_script:
+    - mv .env prod.env
+    - mv temp.env .env
+  artifacts:
+    paths:
+      - build
+    expire_in: 60 mins
+  dependencies:
+    - install
+  only:
+    refs:
+      - master
+
+linting:
+  stage: quality
+  tags:
+    - gitlab-org
+  script:
+    - npm run lint
+  dependencies:
+    - install
+
+test:unit:
+  stage: quality
+  tags:
+    - gitlab-org
+  script:
+    - npm run test-coverage
+  dependencies:
+    - install
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+
+deploy_dev:
+  stage: deploy
+  tags:
+    - gitlab-org
+  before_script:
+    - npm install -g firebase-tools
+    - (if [ -d "build" ]; then echo ok; else exit "no build folder, try to run pipeline again"; fi);
+  script:
+    - firebase deploy --token $FIREBASE_TOKEN --non-interactive --only hosting --project dev
+  environment:
+    name: dev
+    url: $DEV_URL
+  only:
+    refs:
+      - develop
+
+deploy_prod:
+  stage: deploy
+  tags:
+    - gitlab-org
+  before_script:
+    - npm install -g firebase-tools
+    - (if [ -d "build" ]; then echo ok; else exit "no build folder, try to run pipeline again"; fi);
+  script:
+    - firebase deploy --token $FIREBASE_TOKEN --non-interactive --only hosting --project prod
+  environment:
+    name: prod
+    url: $PROD_URL
+  only:
+    refs:
+      - master
+
+.lighthouse:
+  image: markhobson/node-chrome
+  tags:
+    - gitlab-org
+  stage: audit
+  before_script:
+    - npm i -g lighthouse
+  script:
+    - lighthouse --chrome-flags="--headless --no-sandbox" $LIGHTHOUSE_TEST_URL --output html --output-path ./report.html
+  artifacts:
+    paths:
+      - ./report.html
+    expire_in: 1 week
+  when: manual
+
+run_lighthouse_dev:
+  extends: .lighthouse
+  variables:
+    LIGHTHOUSE_TEST_URL: $DEV_URL
+  only:
+    refs:
+      - develop
+
+run_lighthouse_prod:
+  extends: .lighthouse
+  variables:
+    LIGHTHOUSE_TEST_URL: $PROD_URL
+  only:
+    refs:
+      - master
