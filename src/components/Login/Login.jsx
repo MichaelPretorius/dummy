@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import FormInput from './FormInput';
-import { SubmitButton } from './CustomButton';
-import { loginUser } from '../redux/auth/authActions';
+import FormInput from '../FormInput';
+import { SubmitButton } from '../CustomButton';
+import { loginUser } from '../../redux/auth/authActions';
 
-const Login = ({ history, loginUser }) => {
+export const Login = ({ history, loginUser }) => {
   const [credentials, setCredentials] = useState({
     email: '',
     password: '',

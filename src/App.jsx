@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
-import Home from './pages/Home';
-import Private from './pages/Private';
-import Login from './components/Login';
-import Header from './components/Header';
-import Signup from './components/Signup';
-import AuthRoute from './components/AuthRoute';
+import Home from './pages/Home/Home';
+import Private from './pages/PrivatePage/Private';
+import Login from './components/Login/Login';
+import Header from './components/Header/Header';
+import Signup from './components/Signup/Signup';
+import AuthRoute from './components/AuthRoute/AuthRoute';
 import { GlobalStyle } from './theme/globalStyles';
 import { selectInitialFetch } from './redux/auth/authSelectors';
 

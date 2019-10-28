@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import FormInput from './FormInput';
-import { SubmitButton } from './CustomButton';
-import { signUpUser } from '../redux/auth/authActions';
+import FormInput from '../FormInput';
+import { SubmitButton } from '../CustomButton';
+import { signUpUser } from '../../redux/auth/authActions';
 
 const INITIAL_STATE = {
   displayName: '',
@@ -12,7 +12,7 @@ const INITIAL_STATE = {
   confirmPassword: '',
 };
 
-const Signup = ({ history, signUpUser }) => {
+export const Signup = ({ history, signUpUser }) => {
   const [credentials, setCredentials] = useState(INITIAL_STATE);
 
   const { displayName, email, password, confirmPassword } = credentials;

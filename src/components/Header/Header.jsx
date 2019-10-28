@@ -2,11 +2,11 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { selectIsAuthenticated } from '../redux/auth/authSelectors';
-import { NormalButton } from './CustomButton';
-import { logoutUser } from '../redux/auth/authActions';
+import { selectIsAuthenticated } from '../../redux/auth/authSelectors';
+import { NormalButton } from '../CustomButton';
+import { logoutUser } from '../../redux/auth/authActions';
 
-const Header = ({ isAuthenticated, logoutUser, history }) => {
+export const Header = ({ isAuthenticated, logoutUser, history }) => {
   return (
     <>
       <Link to="/">Home</Link>

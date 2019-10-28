@@ -2,9 +2,13 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { selectIsAuthenticated } from '../redux/auth/authSelectors';
+import { selectIsAuthenticated } from '../../redux/auth/authSelectors';
 
-const AuthRoute = ({ component: Component, isAuthenticated, ...rest }) => (
+export const AuthRoute = ({
+  component: Component,
+  isAuthenticated,
+  ...rest
+}) => (
   <Route
     {...rest}
     render={

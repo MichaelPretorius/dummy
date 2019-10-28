@@ -17,6 +17,7 @@
     "react/jsx-one-expression-per-line": 0,
     "no-console": "warn",
     "consistent-return": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/no-named-as-default": 0
   }
 }
