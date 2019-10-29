@@ -11,7 +11,7 @@ import {
   SET_CURRENT_USER,
 } from './authTypes';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   isLoggingIn: false,
   isSigningUp: false,
   isLoggingOut: false,

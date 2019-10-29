@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login component should render Login component 1`] = `
+"<div>
+  <h2>
+    Log In
+  </h2>
+  <form onSubmit={[Function: handleSubmit]}>
+    <FormInput required={true} type=\\"email\\" label=\\"Email\\" name=\\"email\\" value=\\"\\" handleChange={[Function: handleChange]} />
+    <FormInput required={true} type=\\"password\\" label=\\"Password\\" name=\\"password\\" value=\\"\\" handleChange={[Function: handleChange]} />
+    <SubmitButton>
+      Log In
+    </SubmitButton>
+  </form>
+</div>"
+`;

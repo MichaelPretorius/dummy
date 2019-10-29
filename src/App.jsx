@@ -11,7 +11,7 @@ import AuthRoute from './components/AuthRoute/AuthRoute';
 import { GlobalStyle } from './theme/globalStyles';
 import { selectInitialFetch } from './redux/auth/authSelectors';
 
-function App({ initialFetch }) {
+export const App = ({ initialFetch }) => {
   return (
     <>
       <GlobalStyle />
@@ -30,7 +30,7 @@ function App({ initialFetch }) {
       )}
     </>
   );
-}
+};
 
 const mapStateToProps = state => ({
   initialFetch: selectInitialFetch(state),

@@ -13,50 +13,50 @@ import {
 } from './authTypes';
 
 // Sign Up actions
-const signUpRequest = () => ({
+export const signUpRequest = () => ({
   type: SIGN_UP_REQUEST,
 });
 
-const signUpSuccess = userAuth => ({
+export const signUpSuccess = userAuth => ({
   type: SIGN_UP_SUCCESS,
   payload: userAuth,
 });
 
-const signUpError = errorMessage => ({
+export const signUpError = errorMessage => ({
   type: SIGN_UP_FAILURE,
   payload: errorMessage,
 });
 
 // Login actions
-const loginRequest = () => ({
+export const loginRequest = () => ({
   type: LOGIN_REQUEST,
 });
 
-const loginSuccess = userAuth => ({
+export const loginSuccess = userAuth => ({
   type: LOGIN_SUCCESS,
   payload: userAuth,
 });
 
-const loginError = errorMessage => ({
+export const loginError = errorMessage => ({
   type: LOGIN_FAILURE,
   payload: errorMessage,
 });
 
 // Logout actions
-const logOutRequest = () => ({
+export const logoutRequest = () => ({
   type: LOGOUT_REQUEST,
 });
 
-const logOutSuccess = () => ({
+export const logoutSuccess = () => ({
   type: LOGOUT_SUCCESS,
 });
 
-const logOutError = errorMessage => ({
+export const logoutError = errorMessage => ({
   type: LOGOUT_FAILURE,
   payload: errorMessage,
 });
 
-const setCurrentUser = user => ({
+export const setCurrentUser = user => ({
   type: SET_CURRENT_USER,
   payload: user,
 });
@@ -99,15 +99,15 @@ export const signUpUser = (email, password, data, callback) => dispatch => {
 };
 
 export const logoutUser = callback => dispatch => {
-  dispatch(logOutRequest());
+  dispatch(logoutRequest());
   auth
     .signOut()
     .then(() => {
-      dispatch(logOutSuccess());
+      dispatch(logoutSuccess());
       callback();
     })
     .catch(error => {
-      dispatch(logOutError(error.message));
+      dispatch(logoutError(error.message));
     });
 };
 
