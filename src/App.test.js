@@ -7,20 +7,22 @@ import configureStore from 'redux-mock-store';
 import { App } from './App';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
+import Private from './pages/PrivatePage/Private';
 import NotFound from './pages/NotFound/NotFound';
 
 const mockStore = configureStore();
-const store = mockStore({
-  auth: {
-    isAuthenticated: true,
-  },
-});
 
 describe('App component', () => {
   let wrapper;
   const mockProps = {
     initialFetch: true,
   };
+  const store = mockStore({
+    auth: {
+      isAuthenticated: true,
+    },
+  });
+
   beforeEach(() => {
     wrapper = shallow(<App {...mockProps} />);
   });
@@ -49,8 +51,8 @@ describe('App component', () => {
         </Provider>
       </MemoryRouter>
     );
-    expect(wrapper.find(Home)).toHaveLength(0);
-    expect(wrapper.find(NotFound)).toHaveLength(1);
+    expect(wrapper.exists(Home)).toEqual(false);
+    expect(wrapper.exists(NotFound)).toEqual(true);
   });
 
   test('should render component(Home) for valid path(/)', () => {
@@ -61,7 +63,34 @@ describe('App component', () => {
         </Provider>
       </MemoryRouter>
     );
-    expect(wrapper.find(Home)).toHaveLength(1);
-    expect(wrapper.find(NotFound)).toHaveLength(0);
+    expect(wrapper.exists(Home)).toEqual(true);
+  });
+
+  test('should render AuthRoute when isAuthenticated-true', () => {
+    wrapper = mount(
+      <MemoryRouter initialEntries={['/private']}>
+        <Provider store={store}>
+          <App {...mockProps} />
+        </Provider>
+      </MemoryRouter>
+    );
+    expect(wrapper.exists(Private)).toEqual(true);
+  });
+
+  test('should not render AuthRoute when isAuthenticated-false', () => {
+    const store1 = mockStore({
+      auth: {
+        isAuthenticated: false,
+      },
+    });
+    wrapper = mount(
+      <MemoryRouter initialEntries={['/private']}>
+        <Provider store={store1}>
+          <App {...mockProps} />
+        </Provider>
+      </MemoryRouter>
+    );
+    expect(wrapper.exists(Home)).toEqual(true);
+    expect(wrapper.exists(Private)).toEqual(false);
   });
 });
