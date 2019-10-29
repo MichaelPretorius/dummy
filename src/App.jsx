@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import Home from './pages/Home/Home';
 import Private from './pages/PrivatePage/Private';
+import NotFound from './pages/NotFound/NotFound';
 import Login from './components/Login/Login';
 import Header from './components/Header/Header';
 import Signup from './components/Signup/Signup';
@@ -23,6 +24,7 @@ export const App = ({ initialFetch }) => {
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
             <AuthRoute exact path="/private" component={Private} />
+            <Route path="*" component={NotFound} />
           </Switch>
         </>
       ) : (
