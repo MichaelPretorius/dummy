@@ -23,7 +23,6 @@
     "lint": "eslint --ext .js,.jsx .",
     "test": "react-scripts test",
     "test-coverage": "npm run test -- --coverage --watchAll=false",
-    "precommit": "npm run lint && npm run test && pretty-quick --staged",
     "deploy-functions-dev": "firebase use dev && firebase deploy --only functions",
     "deploy-functions-prod": "firebase use prod && firebase deploy --only functions && firebase use dev"
   },
