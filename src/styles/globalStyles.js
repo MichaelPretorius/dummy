@@ -7,8 +7,8 @@ export const GlobalStyle = createGlobalStyle`
   html {
     padding: 0;
     margin: 0;
-    font-size: 20px;
-    ${below.xs`
+    font-size: 18px;
+    ${below.sm`
       font-size: 16px;
     `};
     font-family: 'Poppins', sans-serif;

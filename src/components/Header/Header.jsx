@@ -10,6 +10,7 @@ export const Header = ({ isAuthenticated, logoutUser, history }) => {
   return (
     <>
       <Link to="/">Home</Link>
+      <Link to="/styles">Styles</Link>
       <Link to="/private">Private</Link>
       {isAuthenticated ? (
         <NormalButton onClick={() => logoutUser(() => history.push('/'))}>

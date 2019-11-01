@@ -87,9 +87,10 @@ export const Container = styled.div`
   ${below.xs`
     max-width: 90%;
   `};
-  margin: 0 auto;
+  margin: 50px auto 0;
   height: ${({ fill }) => (fill ? '100vh' : null)};
 `;
+Container.displayName = 'Container';
 
 export const Wrapper = styled.div`
   display: flex;
@@ -99,3 +100,4 @@ export const Wrapper = styled.div`
   align-items: ${props => (props.row ? 'center' : getFlex(props))};
   flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : null)};
 `;
+Wrapper.displayName = 'Wrapper';

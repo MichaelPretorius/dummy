@@ -23,3 +23,4 @@ export const Card = styled.div`
     box-shadow: 4px 4px 18px -6px;
   }
 `;
+Card.displayName = 'Card';

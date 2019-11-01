@@ -21,8 +21,6 @@ const theme = {
   grayScaleColor: '#4d4d4d',
 };
 
-// "precommit": "npm run lint && npm run test && pretty-quick --staged",
-
 export const App = ({ initialFetch }) => {
   return (
     <ThemeProvider theme={theme}>

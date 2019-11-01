@@ -20,9 +20,11 @@ export const InputField = styled.input`
     border-color: ${props => getColor(props)};
   }
 `;
+InputField.displayName = 'InputField';
 
 export const Label = styled.label`
   font-size: 0.8rem;
   color: ${props => getColor(props)};
   margin: 0 1rem;
 `;
+Label.displayName = 'Label';

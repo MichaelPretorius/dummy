@@ -1,15 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App component should render App component 1`] = `
-"<Fragment>
+"<ThemeProvider theme={{...}}>
   <GlobalStyleComponent />
   <withRouter(Connect(Header)) />
   <Switch>
     <Route exact={true} path=\\"/\\" component={[Function: Home]} />
     <Route exact={true} path=\\"/signup\\" component={{...}} />
     <Route exact={true} path=\\"/login\\" component={{...}} />
+    <Route exact={true} path=\\"/styles\\" component={[Function: Styles]} />
     <Connect(AuthRoute) exact={true} path=\\"/private\\" component={[Function: Private]} />
     <Route path=\\"*\\" component={[Function: NotFound]} />
   </Switch>
-</Fragment>"
+</ThemeProvider>"
 `;

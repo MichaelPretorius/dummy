@@ -5,6 +5,9 @@ exports[`Header component should render Header component 1`] = `
   <Link to=\\"/\\">
     Home
   </Link>
+  <Link to=\\"/styles\\">
+    Styles
+  </Link>
   <Link to=\\"/private\\">
     Private
   </Link>

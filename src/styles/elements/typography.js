@@ -10,6 +10,7 @@ export const Display = styled.h1`
   text-align: ${props => getPosition(props)};
   color: ${props => getColor(props)};
 `;
+Display.displayName = 'Display';
 
 export const Header = styled.h2`
   text-align: ${props => getPosition(props)};
@@ -20,6 +21,7 @@ export const Header = styled.h2`
   `};
   color: ${props => getColor(props)};
 `;
+Header.displayName = 'Header';
 
 export const Title = styled.h3`
   font-size: 1.7em;
@@ -27,18 +29,21 @@ export const Title = styled.h3`
   text-align: ${props => getPosition(props)};
   color: ${props => getColor(props)};
 `;
+Title.displayName = 'Title';
 
 export const Headline = styled.p`
   font-size: 1.5rem;
   text-align: ${props => getPosition(props)};
   color: ${props => getColor(props)};
 `;
+Headline.displayName = 'Headline';
 
 export const Body = styled.p`
   font-size: 1rem;
   text-align: ${props => getPosition(props)};
   color: ${props => getColor(props)};
 `;
+Body.displayName = 'Body';
 
 export const Caption = styled.p`
   color: ${props => getColor(props)};
@@ -47,3 +52,4 @@ export const Caption = styled.p`
   margin: 8px;
   color: darkgray;
 `;
+Caption.displayName = 'Caption';

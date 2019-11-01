@@ -24,6 +24,7 @@ export const Button = styled.button`
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.17), 0 8px 16px rgba(0, 0, 0, 0.17);
   }
 `;
+Button.displayName = 'Button';
 
 export const FloatingActionButton = styled(Button)`
   width: 65px;
@@ -34,6 +35,7 @@ export const FloatingActionButton = styled(Button)`
   font-size: 1.4rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17), 0 3px 6px rgba(0, 0, 0, 0.17);
 `;
+FloatingActionButton.displayName = 'FloatingActionButton';
 
 export const LabelButton = styled(Button)`
   color: ${props => getColor(props)};
@@ -45,7 +47,9 @@ export const LabelButton = styled(Button)`
     transition: none;
   }
 `;
+LabelButton.displayName = 'LabelButton';
 
 export const GroupButton = styled(Button)`
   margin: 0;
 `;
+GroupButton.displayName = 'GroupButton';

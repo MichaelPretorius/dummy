@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import logo from './communicate.svg';
+import burger from './navburger.png';
 import {
   Container,
   Wrapper,
@@ -21,26 +22,38 @@ import {
   NavBrand,
   Navs,
   Nav,
+  NavContainer,
+  Burger,
   FloatingActionButton,
 } from '../../styles';
 
 const Styles = () => {
+  const [showNav, setShowNav] = useState(false);
+
+  const toggleNav = () => {
+    setShowNav(!showNav);
+  };
+
   return (
     <>
       {/* navbar.js */}
-      <Header primary>Navbar:</Header>
-      <Navbar secondary>
-        <NavBrand>yDS-template</NavBrand>
-        <Navs>
-          <Nav to="/">link</Nav>
-          <Nav to="/">link</Nav>
-          <Nav to="/">link</Nav>
-        </Navs>
-      </Navbar>
+      <NavContainer secondary>
+        <Wrapper row start>
+          <Burger onClick={toggleNav} src={burger} />
+          <NavBrand to="/">yDS-template</NavBrand>
+        </Wrapper>
+        <Navbar grayScale showNav={showNav}>
+          <Navs>
+            <Nav to="/">link</Nav>
+            <Nav to="/">link</Nav>
+            <Nav to="/">link</Nav>
+          </Navs>
+        </Navbar>
+      </NavContainer>
 
       <Container>
         {/* typography.js */}
-        {/* <Header primary>Typography:</Header>
+        <Header primary>Typography:</Header>
         <Display>Display Fonts for Modal Titles</Display>
         <Header secondary>Header for Page Titles</Header>
         <Title center>Title for Tabs, Titles and Forms</Title>
@@ -48,10 +61,10 @@ const Styles = () => {
         <Body>Body for descriptions</Body>
         <Caption right>
           Caption for timestamps, footers and additional info
-        </Caption> */}
+        </Caption>
 
         {/* cards.js */}
-        {/* <Header primary>Cards:</Header>
+        <Header primary>Cards:</Header>
         <Card fill row>
           <Wrapper>
             <img src={logo} alt="logo" />
@@ -97,10 +110,10 @@ const Styles = () => {
           <Button secondary round fill>
             round fill
           </Button>
-        </Card> */}
+        </Card>
 
         {/* buttons.js */}
-        {/* <Header primary>Buttons:</Header>
+        <Header primary>Buttons:</Header>
         <Wrapper row>
           <Button primary as={Link} to="/">
             primary
@@ -130,10 +143,10 @@ const Styles = () => {
         <GroupButton secondary>Group</GroupButton>
         <Button secondary fill round>
           fill
-        </Button> */}
+        </Button>
 
         {/* formFields.js */}
-        {/* <Header primary>Forms:</Header>
+        <Header primary>Forms:</Header>
         <form>
           <Label>
             text transition fill
@@ -149,7 +162,7 @@ const Styles = () => {
               <InputField primary />
             </Label>
           </Wrapper>
-        </form> */}
+        </form>
       </Container>
     </>
   );
