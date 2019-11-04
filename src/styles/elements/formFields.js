@@ -36,12 +36,13 @@ export const InputField = styled(
 InputField.displayName = 'InputField';
 
 export const Label = styled(
-  ({ color, primary, secondary, accent, grayScale, ...rest }) => (
-    <label {...rest} />
+  ({ color, primary, secondary, accent, grayScale, id, ...rest }) => (
+    <label htmlFor={id} {...rest} />
   )
 )`
   font-size: 0.8rem;
   color: ${props => getColor(props)};
   margin: 0 1rem;
+  display: inline-block;
 `;
 Label.displayName = 'Label';

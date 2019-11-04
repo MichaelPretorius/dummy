@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import FormInput from '../FormInput';
-import { SubmitButton } from '../CustomButton';
+import { Button, Label, InputField } from '../../styles';
 import { loginUser } from '../../redux/auth/authActions';
 
 export const Login = ({ history, loginUser }) => {
@@ -37,23 +36,29 @@ export const Login = ({ history, loginUser }) => {
     <div>
       <h2>Log In</h2>
       <form onSubmit={handleSubmit}>
-        <FormInput
-          required
-          type="email"
-          label="Email"
-          name="email"
-          value={email}
-          handleChange={handleChange}
-        />
-        <FormInput
-          required
-          type="password"
-          label="Password"
-          name="password"
-          value={password}
-          handleChange={handleChange}
-        />
-        <SubmitButton>Log In</SubmitButton>
+        <Label>
+          Email
+          <InputField
+            required
+            type="email"
+            name="email"
+            value={email}
+            onChange={handleChange}
+          />
+        </Label>
+        <Label>
+          Password
+          <InputField
+            required
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+          />
+        </Label>
+        <Button submit primary>
+          Log In
+        </Button>
       </form>
     </div>
   );

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import FormInput from '../FormInput';
-import { SubmitButton } from '../CustomButton';
+import { Button, Label, InputField } from '../../styles';
 import { signUpUser } from '../../redux/auth/authActions';
 
 const INITIAL_STATE = {
@@ -29,7 +28,7 @@ export const Signup = ({ history, signUpUser }) => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Passwords don't match!");
+      // alert("Passwords don't match!");
       return null;
     }
 
@@ -43,39 +42,49 @@ export const Signup = ({ history, signUpUser }) => {
     <>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <FormInput
-          required
-          type="text"
-          label="User Name"
-          name="displayName"
-          value={displayName}
-          handleChange={handleChange}
-        />
-        <FormInput
-          required
-          type="email"
-          label="Email"
-          name="email"
-          value={email}
-          handleChange={handleChange}
-        />
-        <FormInput
-          required
-          type="password"
-          label="Password"
-          name="password"
-          value={password}
-          handleChange={handleChange}
-        />
-        <FormInput
-          required
-          type="password"
-          label="Confirm Password"
-          name="confirmPassword"
-          value={confirmPassword}
-          handleChange={handleChange}
-        />
-        <SubmitButton>Sign Up</SubmitButton>
+        <Label>
+          User Name
+          <InputField
+            required
+            type="email"
+            name="displayName"
+            value={displayName}
+            onChange={handleChange}
+          />
+        </Label>
+        <Label>
+          Email
+          <InputField
+            required
+            type="text"
+            name="email"
+            value={email}
+            onChange={handleChange}
+          />
+        </Label>
+        <Label>
+          Password
+          <InputField
+            required
+            type="password"
+            name="password"
+            value={password}
+            onChange={handleChange}
+          />
+        </Label>
+        <Label>
+          Confirm Password
+          <InputField
+            required
+            type="password"
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={handleChange}
+          />
+        </Label>
+        <Button submit primary>
+          Sign Up
+        </Button>
       </form>
     </>
   );

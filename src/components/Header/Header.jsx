@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { Button } from '../../styles';
 import { selectIsAuthenticated } from '../../redux/auth/authSelectors';
-import { NormalButton } from '../CustomButton';
 import { logoutUser } from '../../redux/auth/authActions';
 
 export const Header = ({ isAuthenticated, logoutUser, history }) => {
@@ -13,9 +13,9 @@ export const Header = ({ isAuthenticated, logoutUser, history }) => {
       <Link to="/styles">Styles</Link>
       <Link to="/private">Private</Link>
       {isAuthenticated ? (
-        <NormalButton onClick={() => logoutUser(() => history.push('/'))}>
+        <Button onClick={() => logoutUser(() => history.push('/'))}>
           Logout
-        </NormalButton>
+        </Button>
       ) : (
         <>
           <Link to="/signup">Signup</Link>

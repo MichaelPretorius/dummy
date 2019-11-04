@@ -66,7 +66,7 @@ const Styles = () => {
 
         {/* cards.js */}
         <Header primary>Cards:</Header>
-        <Card fill row primary>
+        <Card fill row primary alignCenter>
           <Wrapper alignCenter>
             <Display>fill</Display>
             <img src={logo} alt="logo" />
@@ -77,7 +77,7 @@ const Styles = () => {
             gastropub locavore vegan poke. Hell of gochujang subway tile
             fashion.
           </Body>
-          <Wrapper justifyCenter>
+          <Wrapper>
             <Button secondary small round>
               small Button
             </Button>
@@ -113,7 +113,7 @@ const Styles = () => {
 
         {/* buttons.js */}
         <Header primary>Buttons:</Header>
-        <Wrapper row>
+        <Wrapper row justifyCenter>
           <Button primary>primary</Button>
           <Button secondary round>
             secondary round
@@ -122,7 +122,7 @@ const Styles = () => {
         <Button small round right>
           small round right
         </Button>
-        <Wrapper>
+        <Wrapper width="30%">
           <LinkButton primary round to="/">
             LinkButton round
           </LinkButton>
@@ -130,7 +130,7 @@ const Styles = () => {
             small submit
           </Button>
         </Wrapper>
-        <Wrapper row end>
+        <Wrapper row justifyEnd>
           <FloatingActionButton as={Link} to="/">
             Link
           </FloatingActionButton>
@@ -149,7 +149,7 @@ const Styles = () => {
             text transition fill
             <InputField transition fill />
           </Label>
-          <Wrapper row between wrap>
+          <Wrapper row justifyBetween wrap>
             <Label primary>
               small
               <InputField small transition />

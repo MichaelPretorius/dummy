@@ -33,7 +33,8 @@ export const Card = styled(
   align-items: ${props => getFlexAlign(props)};
   flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : null)};
   border-radius: 5px;
-  width: ${({ fill }) => (fill ? '100%' : '40%')};
+  box-sizing: border-box;
+  width: ${({ fill }) => (fill ? 'auto' : '40%')};
   ${below.xs`
     width: 100%;
   `};

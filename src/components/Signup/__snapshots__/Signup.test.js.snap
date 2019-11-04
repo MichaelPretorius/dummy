@@ -6,13 +6,25 @@ exports[`Signup component should render Signup component 1`] = `
     Sign Up
   </h2>
   <form onSubmit={[Function: handleSubmit]}>
-    <FormInput required={true} type=\\"text\\" label=\\"User Name\\" name=\\"displayName\\" value=\\"\\" handleChange={[Function: handleChange]} />
-    <FormInput required={true} type=\\"email\\" label=\\"Email\\" name=\\"email\\" value=\\"\\" handleChange={[Function: handleChange]} />
-    <FormInput required={true} type=\\"password\\" label=\\"Password\\" name=\\"password\\" value=\\"\\" handleChange={[Function: handleChange]} />
-    <FormInput required={true} type=\\"password\\" label=\\"Confirm Password\\" name=\\"confirmPassword\\" value=\\"\\" handleChange={[Function: handleChange]} />
-    <SubmitButton>
+    <Label>
+      User Name
+      <InputField required={true} type=\\"email\\" name=\\"displayName\\" value=\\"\\" onChange={[Function: handleChange]} />
+    </Label>
+    <Label>
+      Email
+      <InputField required={true} type=\\"text\\" name=\\"email\\" value=\\"\\" onChange={[Function: handleChange]} />
+    </Label>
+    <Label>
+      Password
+      <InputField required={true} type=\\"password\\" name=\\"password\\" value=\\"\\" onChange={[Function: handleChange]} />
+    </Label>
+    <Label>
+      Confirm Password
+      <InputField required={true} type=\\"password\\" name=\\"confirmPassword\\" value=\\"\\" onChange={[Function: handleChange]} />
+    </Label>
+    <Button submit={true} primary={true}>
       Sign Up
-    </SubmitButton>
+    </Button>
   </form>
 </Fragment>"
 `;

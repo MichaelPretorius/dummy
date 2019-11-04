@@ -6,11 +6,17 @@ exports[`Login component should render Login component 1`] = `
     Log In
   </h2>
   <form onSubmit={[Function: handleSubmit]}>
-    <FormInput required={true} type=\\"email\\" label=\\"Email\\" name=\\"email\\" value=\\"\\" handleChange={[Function: handleChange]} />
-    <FormInput required={true} type=\\"password\\" label=\\"Password\\" name=\\"password\\" value=\\"\\" handleChange={[Function: handleChange]} />
-    <SubmitButton>
+    <Label>
+      Email
+      <InputField required={true} type=\\"email\\" name=\\"email\\" value=\\"\\" onChange={[Function: handleChange]} />
+    </Label>
+    <Label>
+      Password
+      <InputField required={true} type=\\"password\\" name=\\"password\\" value=\\"\\" onChange={[Function: handleChange]} />
+    </Label>
+    <Button submit={true} primary={true}>
       Log In
-    </SubmitButton>
+    </Button>
   </form>
 </div>"
 `;
