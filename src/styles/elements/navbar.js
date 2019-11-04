@@ -1,19 +1,41 @@
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { getColor, below } from './utils';
+import { getColor, below, getFlexJustify, getFlexAlign } from './utils';
 
-export const NavContainer = styled.header`
+export const NavContainer = styled(
+  ({
+    justifyStart,
+    justifyEnd,
+    justifyAround,
+    justifyBetween,
+    justifyEvenly,
+    justifyCenter,
+    alignStart,
+    alignEnd,
+    alignBaseline,
+    alignCenter,
+    alignStretch,
+    row,
+    color,
+    primary,
+    secondary,
+    accent,
+    grayScale,
+    ...rest
+  }) => <header {...rest} />
+)`
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-  z-index: 2;
-  width: 100%;
+  flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+  justify-content: ${props => getFlexJustify(props, 'space-between')};
+  align-items: ${props => getFlexAlign(props, 'center')};
+  color: #fff;
+  z-index: 1;
   height: 58px;
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   padding: 8px 24px;
   background-color: ${props => getColor(props)};
   ${below.sm`
@@ -42,31 +64,71 @@ export const NavBrand = styled(Link)`
   font-size: 1.5rem;
   font-weight: 600;
   cursor: pointer;
-  color: white;
+  color: #fff;
 `;
 NavBrand.displayName = 'NavBrand';
 
-export const Navbar = styled.nav`
+export const Navbar = styled(
+  ({
+    justifyStart,
+    justifyEnd,
+    justifyAround,
+    justifyBetween,
+    justifyEvenly,
+    justifyCenter,
+    alignStart,
+    alignEnd,
+    alignBaseline,
+    alignCenter,
+    alignStretch,
+    row,
+    color,
+    primary,
+    secondary,
+    accent,
+    grayScale,
+    width,
+    showNav,
+    ...rest
+  }) => <div {...rest} />
+)`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   z-index: 1;
   width: 100%;
   ${below.sm`
-    flex-direction: column;
-    height: 100vh;
-    width: 200px;
+    flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+    justify-content: ${props => getFlexJustify(props)};
+    align-items: ${props => getFlexAlign(props)};
+    width: ${({ width }) => width || '100%'};
     padding: 8px 0;
-    justify-content: start;
-    position: absolute;
-    background-color: ${props => getColor(props)};
-    left: ${({ showNav }) => (showNav ? '0' : '-200px')};
+    position: fixed;
     top: 50px;
+    bottom: 0;
+    left: ${({ showNav, width }) => (showNav ? '0' : `-${width}`)};
+    background-color: ${props => getColor(props)};
   `};
 `;
 Navbar.displayName = 'Navbar';
 
-export const Navs = styled.div`
+export const Navs = styled(
+  ({
+    justifyStart,
+    justifyEnd,
+    justifyAround,
+    justifyBetween,
+    justifyEvenly,
+    justifyCenter,
+    alignStart,
+    alignEnd,
+    alignBaseline,
+    alignCenter,
+    alignStretch,
+    row,
+    ...rest
+  }) => <div {...rest} />
+)`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -74,7 +136,8 @@ export const Navs = styled.div`
   margin-right: 25px;
   ${below.sm`
     flex-direction: ${({ row }) => (row ? 'row' : 'column')};
-    align-items: stretch;
+    justify-content: ${props => getFlexJustify(props)};
+    align-items: ${props => getFlexAlign(props)};
     margin: 0;
     width: 100%;
   `};
@@ -84,12 +147,12 @@ Navs.displayName = 'Navs';
 export const Nav = styled(Link)`
   font-size: 1.2rem;
   margin-right: 25px;
-  color: white;
-  &:hover {
-    color: ${({ theme }) => theme.accentColor};
-  }
+  color: #fff;
   ${below.sm`
     margin: 10px;
   `};
+  &:hover {
+    color: ${({ theme }) => theme.secondaryColor};
+  }
 `;
 Nav.displayName = 'Nav';

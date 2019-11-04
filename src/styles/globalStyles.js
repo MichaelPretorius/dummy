@@ -5,11 +5,11 @@ export const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap');
 
   html {
-    padding: 0;
-    margin: 0;
-    font-size: 18px;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
     ${below.sm`
-      font-size: 16px;
+      font-size: 18px;
     `};
     font-family: 'Poppins', sans-serif;
   }

@@ -24,6 +24,7 @@ import {
   Nav,
   NavContainer,
   Burger,
+  LinkButton,
   FloatingActionButton,
 } from '../../styles';
 
@@ -37,12 +38,12 @@ const Styles = () => {
   return (
     <>
       {/* navbar.js */}
-      <NavContainer secondary>
-        <Wrapper row start>
+      <NavContainer row secondary>
+        <Wrapper row>
           <Burger onClick={toggleNav} src={burger} />
           <NavBrand to="/">yDS-template</NavBrand>
         </Wrapper>
-        <Navbar grayScale showNav={showNav}>
+        <Navbar primary showNav={showNav} width="200px">
           <Navs>
             <Nav to="/">link</Nav>
             <Nav to="/">link</Nav>
@@ -65,21 +66,19 @@ const Styles = () => {
 
         {/* cards.js */}
         <Header primary>Cards:</Header>
-        <Card fill row>
-          <Wrapper>
-            <img src={logo} alt="logo" />
+        <Card fill row primary>
+          <Wrapper alignCenter>
             <Display>fill</Display>
+            <img src={logo} alt="logo" />
           </Wrapper>
           <Body>
             Lorem ipsum dolor amet cronut vape kickstarter, farm-to-table
             everyday carry swag synth man braid chia mumblecore post-ironic
-            gastropub locavore vegan poke. Hell of gochujang subway tile fashion
-            axe flannel, cred williamsburg coloring book. Blog health goth
-            succulents fam, fixie sartorial raclette glossier. Squid seitan
-            chambray neutra live-edge iPhone taiyaki.
+            gastropub locavore vegan poke. Hell of gochujang subway tile
+            fashion.
           </Body>
-          <Wrapper>
-            <Button primary small round>
+          <Wrapper justifyCenter>
+            <Button secondary small round>
               small Button
             </Button>
             <Button small round>
@@ -115,29 +114,27 @@ const Styles = () => {
         {/* buttons.js */}
         <Header primary>Buttons:</Header>
         <Wrapper row>
-          <Button primary as={Link} to="/">
-            primary
-          </Button>
+          <Button primary>primary</Button>
           <Button secondary round>
             secondary round
           </Button>
         </Wrapper>
-        <Button primary small round right>
+        <Button small round right>
           small round right
         </Button>
         <Wrapper>
-          <Button primary round>
-            round
-          </Button>
-          <Button secondary small>
-            small
+          <LinkButton primary round to="/">
+            LinkButton round
+          </LinkButton>
+          <Button secondary small submit>
+            small submit
           </Button>
         </Wrapper>
         <Wrapper row end>
           <FloatingActionButton as={Link} to="/">
-            Hi
+            Link
           </FloatingActionButton>
-          <LabelButton>label button</LabelButton>
+          <LabelButton primary>label button</LabelButton>
         </Wrapper>
         <GroupButton primary>Group</GroupButton>
         <GroupButton secondary>Group</GroupButton>
@@ -152,7 +149,7 @@ const Styles = () => {
             text transition fill
             <InputField transition fill />
           </Label>
-          <Wrapper row between>
+          <Wrapper row between wrap>
             <Label primary>
               small
               <InputField small transition />

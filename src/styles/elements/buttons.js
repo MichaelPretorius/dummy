@@ -1,7 +1,23 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getColor, below } from './utils';
 
-export const Button = styled.button`
+export const Button = styled(
+  ({
+    small,
+    round,
+    fill,
+    right,
+    color,
+    primary,
+    secondary,
+    accent,
+    grayScale,
+    submit,
+    ...rest
+  }) => <button type={submit ? 'submit' : 'button'} {...rest} />
+)`
   padding: ${({ small }) => (small ? '7px 14px' : '18px 32px')};
   border-radius: ${({ round }) => (round ? '20px' : '0')};
   border: none;
@@ -13,18 +29,23 @@ export const Button = styled.button`
   font-size: 0.9rem;
   text-align: center;
   width: ${({ fill }) => (fill ? '100%' : 'auto')};
+  background: ${props => getColor(props)};
+  float: ${({ right }) => (right ? 'right' : null)};
   ${below.xs`
     padding: ${({ small }) => (small ? '5px 8px' : '14px 25px')};
   `};
-  background: ${props => getColor(props)};
-  float: ${({ right }) => (right ? 'right' : null)};
-
   &:hover {
     transition: 0.2s ease-in;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.17), 0 8px 16px rgba(0, 0, 0, 0.17);
   }
 `;
 Button.displayName = 'Button';
+
+export const LinkButton = ({ to, children, ...props }) => (
+  <Link to={to}>
+    <Button {...props}>{children}</Button>
+  </Link>
+);
 
 export const FloatingActionButton = styled(Button)`
   width: 65px;

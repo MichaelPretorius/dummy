@@ -1,60 +1,58 @@
+import React from 'react';
 import styled, { css } from 'styled-components';
 
-export const getColor = (props, defaultColor) => {
-  if (props.color) {
-    return props.color;
-  }
-  if (props.primary) {
-    return props.theme.primaryColor;
-  }
-  if (props.secondary) {
-    return props.theme.secondaryColor;
-  }
-  if (props.accent) {
-    return props.theme.accentColor;
-  }
-  if (props.grayScale) {
-    return props.theme.grayScaleColor;
-  }
-
-  return defaultColor || props.theme.grayScaleColor;
+export const getColor = (
+  { color, primary, secondary, accent, grayScale, theme },
+  defaultColor
+) => {
+  if (color) return color;
+  if (primary) return theme.primaryColor;
+  if (secondary) return theme.secondaryColor;
+  if (accent) return theme.accentColor;
+  if (grayScale) return theme.grayScaleColor;
+  return defaultColor || theme.grayScaleColor;
 };
 
-export const getPosition = (props, defaultPosition) => {
-  if (props.center) {
-    return 'center';
-  }
-  if (props.right) {
-    return 'right';
-  }
-  if (defaultPosition) {
-    return defaultPosition;
-  }
-
+export const getPosition = ({ center, right, left }, defaultPosition) => {
+  if (center) return 'center';
+  if (right) return 'right';
+  if (left) return 'left';
+  if (defaultPosition) return defaultPosition;
   return 'left';
 };
 
-export const getFlex = (props, defaultPosition) => {
-  if (props.start) {
-    return 'flex-start';
-  }
-  if (props.end) {
-    return 'flex-end';
-  }
-  if (props.around) {
-    return 'space-around';
-  }
-  if (props.between) {
-    return 'space-between';
-  }
-  if (props.evenly) {
-    return 'space-evenly';
-  }
-  if (defaultPosition) {
-    return defaultPosition;
-  }
+export const getFlexJustify = (
+  {
+    justifyStart,
+    justifyEnd,
+    justifyAround,
+    justifyBetween,
+    justifyEvenly,
+    justifyCenter,
+  },
+  defaultPosition
+) => {
+  if (justifyStart) return 'flex-start';
+  if (justifyEnd) return 'flex-end';
+  if (justifyAround) return 'space-around';
+  if (justifyBetween) return 'space-between';
+  if (justifyEvenly) return 'space-evenly';
+  if (justifyCenter) return 'center';
+  if (defaultPosition) return defaultPosition;
+  return 'flex-start';
+};
 
-  return 'center';
+export const getFlexAlign = (
+  { alignStart, alignEnd, alignBaseline, alignCenter, alignStretch },
+  defaultPosition
+) => {
+  if (alignStart) return 'flex-start';
+  if (alignEnd) return 'flex-end';
+  if (alignCenter) return 'center';
+  if (alignBaseline) return 'baseline';
+  if (alignStretch) return 'stretch';
+  if (defaultPosition) return defaultPosition;
+  return 'stretch';
 };
 
 const sizes = {
@@ -82,22 +80,44 @@ export const below = Object.keys(sizes).reduce((acc, label) => {
   return acc;
 }, {});
 
-export const Container = styled.div`
-  max-width: ${({ fillWidth }) => (fillWidth ? '100%' : '80%')};
+export const Container = styled(({ fill, fillHeight, ...rest }) => (
+  <div {...rest} />
+))`
+  max-width: ${({ fill }) => (fill ? '100%' : '80%')};
+  margin: 50px auto 0;
+  height: ${({ fillHeight }) => (fillHeight ? '100vh' : 'auto')};
   ${below.xs`
     max-width: 90%;
   `};
-  margin: 50px auto 0;
-  height: ${({ fill }) => (fill ? '100vh' : null)};
 `;
 Container.displayName = 'Container';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(
+  ({
+    justifyStart,
+    justifyEnd,
+    justifyAround,
+    justifyBetween,
+    justifyEvenly,
+    justifyCenter,
+    alignStart,
+    alignEnd,
+    alignBaseline,
+    alignCenter,
+    alignStretch,
+    width,
+    height,
+    row,
+    wrap,
+    ...rest
+  }) => <div {...rest} />
+)`
   display: flex;
-  width: 100%;
+  width: ${({ width }) => width || '100%'};
+  height: ${({ height }) => height || '100%'};
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
-  justify-content: ${props => (props.row ? getFlex(props) : 'center')};
-  align-items: ${props => (props.row ? 'center' : getFlex(props))};
+  justify-content: ${props => getFlexJustify(props)};
+  align-items: ${props => getFlexAlign(props)};
   flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : null)};
 `;
 Wrapper.displayName = 'Wrapper';

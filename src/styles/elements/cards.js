@@ -1,12 +1,36 @@
+import React from 'react';
 import styled from 'styled-components';
-import { below, getColor, getFlex } from './utils';
+import { below, getColor, getFlexJustify, getFlexAlign } from './utils';
 
-export const Card = styled.div`
+export const Card = styled(
+  ({
+    justifyStart,
+    justifyEnd,
+    justifyAround,
+    justifyBetween,
+    justifyEvenly,
+    justifyCenter,
+    alignStart,
+    alignEnd,
+    alignBaseline,
+    alignCenter,
+    alignStretch,
+    row,
+    wrap,
+    fill,
+    color,
+    primary,
+    secondary,
+    accent,
+    grayScale,
+    ...rest
+  }) => <div {...rest} />
+)`
   display: flex;
   background: ${props => getColor(props, '#fff')};
   flex-direction: ${({ row }) => (row ? 'row' : 'column')};
-  justify-content: ${props => (props.row ? getFlex(props) : 'center')};
-  align-items: ${props => (props.row ? 'center' : getFlex(props))};
+  justify-content: ${props => getFlexJustify(props)};
+  align-items: ${props => getFlexAlign(props)};
   flex-wrap: ${({ wrap }) => (wrap ? 'wrap' : null)};
   border-radius: 5px;
   width: ${({ fill }) => (fill ? '100%' : '40%')};

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "firebase": "^7.2.2",
+    "firebase": "^7.2.3",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-redux": "^7.1.1",
@@ -14,7 +14,7 @@
     "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
-    "styled-components": "^4.4.0"
+    "styled-components": "^4.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,7 +23,6 @@
     "lint": "eslint --ext .js,.jsx .",
     "test": "react-scripts test",
     "test-coverage": "npm run test -- --coverage --watchAll=false",
-    "precommit": "npm run lint && npm run test && pretty-quick --staged",
     "deploy-functions-dev": "firebase use dev && firebase deploy --only functions",
     "deploy-functions-prod": "firebase use prod && firebase deploy --only functions && firebase use dev"
   },
