@@ -13,13 +13,8 @@ import Signup from './components/Signup/Signup';
 import AuthRoute from './components/AuthRoute/AuthRoute';
 import { GlobalStyle } from './styles/globalStyles';
 import { selectInitialFetch } from './redux/auth/authSelectors';
-
-const theme = {
-  primaryColor: '#33D422',
-  secondaryColor: '#31662B',
-  accentColor: '#1EFE07',
-  grayScaleColor: '#4d4d4d',
-};
+import { Container } from './styles';
+import theme from './styles/theme';
 
 export const App = ({ initialFetch }) => {
   return (
@@ -28,15 +23,17 @@ export const App = ({ initialFetch }) => {
       {initialFetch ? (
         <>
           <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/login" component={Login} />
-            {/* REMEMBER TO DELETE THIS PATH AND THE STYLE PAGE! */}
-            <Route exact path="/styles" component={Styles} />
-            <AuthRoute exact path="/private" component={Private} />
-            <Route path="*" component={NotFound} />
-          </Switch>
+          <Container>
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/login" component={Login} />
+              {/* REMEMBER TO DELETE THIS PATH AND THE STYLE PAGE! */}
+              <Route exact path="/styles" component={Styles} />
+              <AuthRoute exact path="/private" component={Private} />
+              <Route path="*" component={NotFound} />
+            </Switch>
+          </Container>
         </>
       ) : (
         <div>Loading...</div>

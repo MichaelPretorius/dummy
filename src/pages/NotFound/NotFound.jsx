@@ -1,7 +1,13 @@
 import React from 'react';
 
+import { Header } from '../../styles';
+
 export const NotFound = () => {
-  return <div>NotFound</div>;
+  return (
+    <Header center secondary>
+      NotFound
+    </Header>
+  );
 };
 
 export default NotFound;

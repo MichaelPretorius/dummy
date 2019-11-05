@@ -30,7 +30,7 @@ export const NavContainer = styled(
   justify-content: ${props => getFlexJustify(props, 'space-between')};
   align-items: ${props => getFlexAlign(props, 'center')};
   color: #fff;
-  z-index: 1;
+  z-index: 2;
   height: 58px;
   position: fixed;
   top: 0;
@@ -42,6 +42,7 @@ export const NavContainer = styled(
     flex-direction: column;
     align-items: flex-start;
     height: 50px;
+    padding: 8px 15px;
   `};
 `;
 NavContainer.displayName = 'NavContainer';
@@ -50,9 +51,8 @@ export const Burger = styled.img`
   display: none;
   height: 100%;
   width: 30px;
-  margin-right: 10px;
+  margin-right: 15px;
   cursor: pointer;
-  color: #fff;
   ${below.sm`
     display: block;
   `};
@@ -145,14 +145,14 @@ export const Navs = styled(
 Navs.displayName = 'Navs';
 
 export const Nav = styled(Link)`
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-right: 25px;
   color: #fff;
   ${below.sm`
     margin: 10px;
   `};
   &:hover {
-    color: ${({ theme }) => theme.secondaryColor};
+    color: ${({ theme }) => theme.accentColor};
   }
 `;
 Nav.displayName = 'Nav';

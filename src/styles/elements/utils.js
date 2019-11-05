@@ -84,10 +84,12 @@ export const Container = styled(({ fill, fillHeight, ...rest }) => (
   <div {...rest} />
 ))`
   max-width: ${({ fill }) => (fill ? '100%' : '80%')};
-  margin: 50px auto 0;
+  margin: 0 auto;
+  padding-top: 58px;
   height: ${({ fillHeight }) => (fillHeight ? '100vh' : 'auto')};
-  ${below.xs`
+  ${below.sm`
     max-width: 90%;
+    padding-top: 50px;
   `};
 `;
 Container.displayName = 'Container';

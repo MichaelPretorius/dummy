@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Label, InputField } from '../../styles';
+import { Form, Button, Label, InputField, Header, Wrapper } from '../../styles';
 import { loginUser } from '../../redux/auth/authActions';
 
 export const Login = ({ history, loginUser }) => {
@@ -33,34 +33,40 @@ export const Login = ({ history, loginUser }) => {
   };
 
   return (
-    <div>
-      <h2>Log In</h2>
-      <form onSubmit={handleSubmit}>
-        <Label>
-          Email
-          <InputField
-            required
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </Label>
-        <Label>
-          Password
-          <InputField
-            required
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </Label>
-        <Button submit primary>
-          Log In
-        </Button>
-      </form>
-    </div>
+    <>
+      <Header center secondary>
+        Log In
+      </Header>
+      <Wrapper>
+        <Form onSubmit={handleSubmit} alignEnd>
+          <Label secondary>
+            Email
+            <InputField
+              required
+              transition
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </Label>
+          <Label secondary>
+            Password
+            <InputField
+              required
+              transition
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </Label>
+          <Button submit primary>
+            Log In
+          </Button>
+        </Form>
+      </Wrapper>
+    </>
   );
 };
 

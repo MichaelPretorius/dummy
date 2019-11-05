@@ -1,22 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Login component should render Login component 1`] = `
-"<div>
-  <h2>
+"<Fragment>
+  <Header center={true} secondary={true}>
     Log In
-  </h2>
-  <form onSubmit={[Function: handleSubmit]}>
-    <Label>
-      Email
-      <InputField required={true} type=\\"email\\" name=\\"email\\" value=\\"\\" onChange={[Function: handleChange]} />
-    </Label>
-    <Label>
-      Password
-      <InputField required={true} type=\\"password\\" name=\\"password\\" value=\\"\\" onChange={[Function: handleChange]} />
-    </Label>
-    <Button submit={true} primary={true}>
-      Log In
-    </Button>
-  </form>
-</div>"
+  </Header>
+  <Wrapper>
+    <Form onSubmit={[Function: handleSubmit]} alignEnd={true}>
+      <Label secondary={true}>
+        Email
+        <InputField required={true} transition={true} type=\\"email\\" name=\\"email\\" value=\\"\\" onChange={[Function: handleChange]} />
+      </Label>
+      <Label secondary={true}>
+        Password
+        <InputField required={true} transition={true} type=\\"password\\" name=\\"password\\" value=\\"\\" onChange={[Function: handleChange]} />
+      </Label>
+      <Button submit={true} primary={true}>
+        Log In
+      </Button>
+    </Form>
+  </Wrapper>
+</Fragment>"
 `;

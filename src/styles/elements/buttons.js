@@ -48,10 +48,12 @@ export const LinkButton = ({ to, children, ...props }) => (
 );
 
 export const FloatingActionButton = styled(Button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 65px;
   height: 65px;
   margin: 0.3em;
-  padding: 10px;
   border-radius: 50%;
   font-size: 1.4rem;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17), 0 3px 6px rgba(0, 0, 0, 0.17);

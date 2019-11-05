@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 
-import { Button, Label, InputField } from '../../styles';
+import { Form, Button, Label, InputField, Header, Wrapper } from '../../styles';
 import { signUpUser } from '../../redux/auth/authActions';
 
 const INITIAL_STATE = {
@@ -40,52 +40,56 @@ export const Signup = ({ history, signUpUser }) => {
 
   return (
     <>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <Label>
-          User Name
-          <InputField
-            required
-            type="email"
-            name="displayName"
-            value={displayName}
-            onChange={handleChange}
-          />
-        </Label>
-        <Label>
-          Email
-          <InputField
-            required
-            type="text"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </Label>
-        <Label>
-          Password
-          <InputField
-            required
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </Label>
-        <Label>
-          Confirm Password
-          <InputField
-            required
-            type="password"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={handleChange}
-          />
-        </Label>
-        <Button submit primary>
-          Sign Up
-        </Button>
-      </form>
+      <Header center secondary>
+        Sign Up
+      </Header>
+      <Wrapper>
+        <Form onSubmit={handleSubmit} alignEnd>
+          <Label secondary>
+            User Name
+            <InputField
+              required
+              type="email"
+              name="displayName"
+              value={displayName}
+              onChange={handleChange}
+            />
+          </Label>
+          <Label secondary>
+            Email
+            <InputField
+              required
+              type="text"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </Label>
+          <Label secondary>
+            Password
+            <InputField
+              required
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </Label>
+          <Label secondary>
+            Confirm Password
+            <InputField
+              required
+              type="password"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={handleChange}
+            />
+          </Label>
+          <Button submit primary>
+            Sign Up
+          </Button>
+        </Form>
+      </Wrapper>
     </>
   );
 };

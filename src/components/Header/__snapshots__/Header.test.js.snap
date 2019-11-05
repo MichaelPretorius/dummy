@@ -1,21 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header component should render Header component 1`] = `
-"<Fragment>
-  <Link to=\\"/\\">
-    Home
-  </Link>
-  <Link to=\\"/styles\\">
-    Styles
-  </Link>
-  <Link to=\\"/private\\">
-    Private
-  </Link>
-  <Link to=\\"/signup\\">
-    Signup
-  </Link>
-  <Link to=\\"/login\\">
-    Login
-  </Link>
-</Fragment>"
+"<NavContainer row={true} secondary={true}>
+  <Wrapper row={true}>
+    <Burger onClick={[Function: toggleNav]} src=\\"navburger.png\\" />
+    <NavBrand to=\\"/\\">
+      Home
+    </NavBrand>
+  </Wrapper>
+  <Navbar showNav={false} width=\\"200px\\">
+    <Navs>
+      <Nav to=\\"/styles\\">
+        Styles
+      </Nav>
+      <Nav to=\\"/private\\">
+        Private
+      </Nav>
+      <Nav to=\\"/signup\\">
+        Signup
+      </Nav>
+      <Nav to=\\"/login\\">
+        Login
+      </Nav>
+    </Navs>
+  </Navbar>
+</NavContainer>"
 `;

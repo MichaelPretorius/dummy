@@ -1,10 +1,37 @@
 import React from 'react';
 import styled from 'styled-components';
-import { getColor } from './utils';
+import { getColor, getFlexJustify, getFlexAlign, below } from './utils';
+
+export const Form = styled(
+  ({
+    justifyStart,
+    justifyEnd,
+    justifyAround,
+    justifyBetween,
+    justifyEvenly,
+    justifyCenter,
+    alignStart,
+    alignEnd,
+    alignBaseline,
+    alignCenter,
+    alignStretch,
+    row,
+    ...rest
+  }) => <form {...rest} />
+)`
+  display: flex;
+  flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+  justify-content: ${props => getFlexJustify(props)};
+  align-items: ${props => getFlexAlign(props)};
+  width: ${({ width }) => width || 'auto'};
+  margin: 0.5rem auto;
+  padding: 0;
+`;
+Form.displayName = 'Form';
 
 export const InputField = styled(
   ({
-    fill,
+    width,
     small,
     transition,
     color,
@@ -16,20 +43,22 @@ export const InputField = styled(
   }) => <input {...rest} />
 )`
   min-width: 300px;
-  width: ${({ fill }) => (fill ? '100%' : 'auto')};
+  width: ${({ width }) => width || 'auto'};
   padding: ${({ small }) => (small ? '7px 12px' : '16px')};
   font-size: 1rem;
   outline: none;
-  display: inline-block;
   margin: 0.4rem;
   color: ${props => getColor(props)};
   border: none;
   border-bottom: 2px solid ${props => props.theme.secondaryColor};
   border-radius: 0;
+  ${below.xs`
+    min-width: 250px;
+  `};
 
   &:focus {
-    padding: ${props => (props.transition ? '1.4em' : null)};
-    transition: ${props => (props.transition ? '0.5s ease-in' : null)};
+    padding: ${props => (props.transition ? '1.3em' : null)};
+    transition: ${props => (props.transition ? '0.3s ease-in' : null)};
     border-color: ${props => getColor(props)};
   }
 `;
@@ -42,7 +71,11 @@ export const Label = styled(
 )`
   font-size: 0.8rem;
   color: ${props => getColor(props)};
-  margin: 0 1rem;
-  display: inline-block;
+  margin: 0 0;
+  width: auto;
+  ${below.xs`
+    display: flex;
+    flex-direction: ${({ row }) => (row ? 'row' : 'column')};
+  `};
 `;
 Label.displayName = 'Label';
