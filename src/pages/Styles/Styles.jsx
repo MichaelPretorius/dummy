@@ -21,7 +21,7 @@ import {
   Form,
 } from '../../styles';
 
-const Styles = () => {
+export const Styles = () => {
   return (
     <>
       {/* typography.js */}

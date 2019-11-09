@@ -27,7 +27,7 @@ export const Header = ({ isAuthenticated, logoutUser, history }) => {
     <NavContainer row secondary>
       <Wrapper row>
         <Burger onClick={toggleNav} src={burger} />
-        <NavBrand to="/">Home</NavBrand>
+        <NavBrand to="/">yDS</NavBrand>
       </Wrapper>
       <Navbar showNav={showNav} width="200px">
         <Navs>

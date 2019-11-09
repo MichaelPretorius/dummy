@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Styles component should render Styles component 1`] = `
+"<Fragment>
+  <Header primary={true}>
+    Typography:
+  </Header>
+  <Display>
+    Display Fonts for Modal Titles
+  </Display>
+  <Header secondary={true}>
+    Header for Page Titles
+  </Header>
+  <Title center={true}>
+    Title for Tabs, Titles and Forms
+  </Title>
+  <Headline>
+    Headline for Info Paragraphs!
+  </Headline>
+  <Body>
+    Body for descriptions
+  </Body>
+  <Caption right={true}>
+    Caption for timestamps, footers and additional info
+  </Caption>
+  <Header primary={true}>
+    Buttons:
+  </Header>
+  <Wrapper row={true} justifyCenter={true}>
+    <Button primary={true}>
+      primary
+    </Button>
+    <Button secondary={true} round={true}>
+      secondary round
+    </Button>
+  </Wrapper>
+  <Button small={true} round={true} right={true}>
+    small round right
+  </Button>
+  <Wrapper width=\\"30%\\">
+    <LinkButton primary={true} round={true} to=\\"/\\">
+      LinkButton round
+    </LinkButton>
+    <Button secondary={true} small={true} submit={true}>
+      small submit
+    </Button>
+  </Wrapper>
+  <Wrapper row={true} justifyEnd={true}>
+    <FloatingActionButton as={{...}} to=\\"/\\">
+      Link
+    </FloatingActionButton>
+    <LabelButton primary={true}>
+      label button
+    </LabelButton>
+  </Wrapper>
+  <GroupButton primary={true}>
+    Group
+  </GroupButton>
+  <GroupButton secondary={true}>
+    Group
+  </GroupButton>
+  <Button secondary={true} fill={true} round={true}>
+    fill
+  </Button>
+  <Header primary={true}>
+    Forms:
+  </Header>
+  <Form>
+    <Label>
+      text transition width
+      <InputField transition={true} width=\\"100%\\" />
+    </Label>
+    <Wrapper row={true} justifyBetween={true} wrap={true}>
+      <Label primary={true}>
+        small
+        <InputField small={true} transition={true} />
+      </Label>
+      <Label>
+        primary
+        <InputField primary={true} />
+      </Label>
+    </Wrapper>
+  </Form>
+  <Header primary={true}>
+    Cards:
+  </Header>
+  <Card fill={true} row={true} primary={true} alignCenter={true}>
+    <Wrapper alignCenter={true}>
+      <Display>
+        fill
+      </Display>
+      <img src=\\"communicate.svg\\" alt=\\"logo\\" />
+    </Wrapper>
+    <Body>
+      Lorem ipsum dolor amet cronut vape kickstarter, farm-to-table everyday carry swag synth man braid chia mumblecore post-ironic gastropub locavore vegan poke. Hell of gochujang subway tile fashion.
+    </Body>
+    <Wrapper>
+      <Button secondary={true} small={true} round={true}>
+        small Button
+      </Button>
+      <Button small={true} round={true}>
+        small Button
+      </Button>
+    </Wrapper>
+  </Card>
+  <Card>
+    <img src=\\"communicate.svg\\" alt=\\"logo\\" />
+    <Display>
+      Media Cards
+    </Display>
+    <Body>
+      Lorem ipsum dolor amet cronut vape kickstarter, farm-to-table everyday carry swag synth man braid chia mumblecore post-ironic gastropub locavore vegan poke. Hell of gochujang subway tile fashion axe flannel, cred williamsburg coloring book. Blog health goth succulents fam, fixie sartorial raclette glossier. Squid seitan chambray neutra live-edge iPhone taiyaki.
+    </Body>
+    <Caption right={true}>
+      7 days ago
+    </Caption>
+    <Wrapper row={true} justifyEvenly={true}>
+      <Button primary={true} small={true} round={true}>
+        small Button
+      </Button>
+      <Button small={true} round={true}>
+        small Button
+      </Button>
+    </Wrapper>
+    <Button secondary={true} round={true} fill={true}>
+      round fill
+    </Button>
+  </Card>
+</Fragment>"
+`;

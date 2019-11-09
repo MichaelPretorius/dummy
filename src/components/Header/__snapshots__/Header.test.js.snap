@@ -5,7 +5,7 @@ exports[`Header component should render Header component 1`] = `
   <Wrapper row={true}>
     <Burger onClick={[Function: toggleNav]} src=\\"navburger.png\\" />
     <NavBrand to=\\"/\\">
-      Home
+      yDS
     </NavBrand>
   </Wrapper>
   <Navbar showNav={false} width=\\"200px\\">
@@ -16,12 +16,9 @@ exports[`Header component should render Header component 1`] = `
       <Nav to=\\"/private\\">
         Private
       </Nav>
-      <Nav to=\\"/signup\\">
-        Signup
-      </Nav>
-      <Nav to=\\"/login\\">
-        Login
-      </Nav>
+      <Button onClick={[Function: onClick]}>
+        Logout
+      </Button>
     </Navs>
   </Navbar>
 </NavContainer>"
